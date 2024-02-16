@@ -25,3 +25,5 @@ const Map: FC = () => {
 
 export default Map;
 
+export const revalidate = 60;
+
