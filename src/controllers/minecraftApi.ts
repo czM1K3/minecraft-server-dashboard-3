@@ -5,12 +5,18 @@ import type {
 	StrippedServerRouteType,
 } from "../types/minecraftApi";
 import { env } from "../env";
+import cache from "@/utils/cache";
 
 const ServerRoute = async () => {
 	try {
-		const result = await fetch(`${env.SERVERTAP_ADDRESS}/v1/server`, { next: { revalidate: 0 } });
+		const cached = cache.get("server");
+		if (cached) {
+			return cached as ServerRouteType;
+		}
+		const result = await fetch(`${env.SERVERTAP_ADDRESS}/v1/server`);
 		if (result.ok) {
 			const json = await result.json();
+			cache.set("server", json, 1);
 			return json as ServerRouteType;
 		}
 		return null;
@@ -35,9 +41,14 @@ const ServerRouteStripped =
 
 const PlayersRoute = async () => {
 	try {
-		const result = await fetch(`${env.SERVERTAP_ADDRESS}/v1/players`, { next: { revalidate: 0 } });
+		const cached = cache.get("players");
+		if (cached) {
+			return cached as PlayersRouteType;
+		}
+		const result = await fetch(`${env.SERVERTAP_ADDRESS}/v1/players`);
 		if (result.ok) {
 			const json = await result.json();
+			cache.set("players", json, 1);
 			return json as PlayersRouteType;
 		}
 		return null;

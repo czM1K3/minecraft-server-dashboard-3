@@ -4,6 +4,7 @@ import MinecraftApiController from "@/controllers/minecraftApi";
 import ServerInfo from "@/components/ServerInfo";
 import { NextPage } from "next";
 
+export const revalidate = 0;
 
 const Home: NextPage = async () => {
   const serverData = await MinecraftApiController.ServerRouteStripped();
