@@ -1,10 +1,14 @@
+import Image from "next/image";
 import type { FC } from "react";
 
 const Op: FC = () => {
 	return (
-		<img
+		<Image
 			src="/assets/commandblock.webp"
-			style={{ width: "50px" }}
+			alt="command block icon"
+			width={50}
+			height={50}
+			unoptimized
 			title="Player has op"
 		/>
 	);

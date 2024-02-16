@@ -1,3 +1,4 @@
+import Image from "next/image";
 import { FC, useMemo, CSSProperties } from "react";
 
 export enum BarType {
@@ -12,7 +13,6 @@ type BarProps = {
 
 const imageProperties = (mirror: boolean): CSSProperties => ({
 	imageRendering: "pixelated",
-	width: "20px",
 	padding: "1px",
 	transform: mirror ? `scaleX(-1)` : undefined,
 });
@@ -30,21 +30,33 @@ const Bar: FC<BarProps> = ({ count, type }) => {
 	return (
 		<div style={{ fontSize: "20px" }}>
 			{counts.full.map((_item, index) => (
-				<img
+				<Image
 					src={`/assets/full-${type}.png`}
+					alt={"full-"+type}
+					width={20}
+					height={20}
+					unoptimized
 					key={index}
 					style={imageProperties(type === "hunger")}
 				/>
 			))}
 			{counts.hasHalf && (
-				<img
+				<Image
 					src={`/assets/half-${type}.png`}
+					alt={"half-"+type}
+					width={20}
+					height={20}
+					unoptimized
 					style={imageProperties(type === "hunger")}
 				/>
 			)}
 			{counts.empty.map((_item, index) => (
-				<img
+				<Image
 					src={`/assets/no-${type}.png`}
+					alt={"no-"+type}
+					width={20}
+					height={20}
+					unoptimized
 					key={index}
 					style={imageProperties(type === "hunger")}
 				/>

@@ -1,3 +1,4 @@
+import Image from "next/image";
 import type { FC } from "react";
 
 type GamemodeProps = {
@@ -8,17 +9,23 @@ const Gamemode: FC<GamemodeProps> = ({ mode }) => {
 	switch (mode) {
 		case "CREATIVE":
 			return (
-				<img
+				<Image
 					src="/assets/goldenapple.webp"
-					style={{ width: "50px" }}
+					alt="golden apple icon"
+					width={50}
+					height={50}
+					unoptimized
 					title="Player is in creative mode"
 				/>
 			);
 		case "SPECTATOR":
 			return (
-				<img
+				<Image
 					src="/assets/spyglass.webp"
-					style={{ width: "50px" }}
+					alt="spyglass icon"
+					width={50}
+					height={50}
+					unoptimized
 					title="Player is in specator mode"
 				/>
 			);

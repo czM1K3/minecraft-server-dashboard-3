@@ -1,34 +1,42 @@
+import Image from "next/image";
 import type { FC } from "react";
 
 type WorldTypeProps = {
 	type: string;
 };
 
-const styles = { width: "50px" };
-
 const WorldType: FC<WorldTypeProps> = ({ type }) => {
 	switch (type) {
 		case "NETHER":
 			return (
-				<img
+				<Image
 					src="/assets/netherrack.webp"
-					style={styles}
+					alt="netherrack icon"
+					width={50}
+					height={50}
+					unoptimized
 					title="Player is in the nether"
 				/>
 			);
 		case "THE_END":
 			return (
-				<img
+				<Image
 					src="/assets/endstone.webp"
-					style={styles}
+					alt="endstone icon"
+					width={50}
+					height={50}
+					unoptimized
 					title="Player is in the end"
 				/>
 			);
 		default:
 			return (
-				<img
+				<Image
 					src="/assets/grassblock.webp"
-					style={styles}
+					alt="grassblock icon"
+					width={50}
+					height={50}
+					unoptimized
 					title="Player is in overworld"
 				/>
 			);
